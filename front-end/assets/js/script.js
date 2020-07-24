@@ -115,7 +115,7 @@ function renderStatisticsPanel() {
   if (countResult > 0) {
     statisticsPanelDiv.innerHTML = `<div class="row">
         <h4 class="m-4">Estatísticas</h4>
-        <div class="col-12 ml-2 mb-4">
+        <div class="col-12 ml-2 mb-2">
           <strong>Masculino</strong>: ${ maleCount } <br />
           <strong>Feminino</strong>: ${ femaleCount } <br />
           <strong>Soma das idades</strong>: ${ numberFormat.format(agesTotal) } <br />
