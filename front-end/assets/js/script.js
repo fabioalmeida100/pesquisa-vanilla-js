@@ -12,6 +12,10 @@ let panelNoStatistics = null;
 let peoplePanelDiv = null;
 let statisticsPanelDiv = null;
 let countResult = 0;
+let maleCount = 0;
+let femaleCount = 0;
+let agesTotal = 0;
+let ageAverage = 0;
 
 window.addEventListener('load', () => {
   peoplePanel = document.querySelector('#people-panel');
@@ -55,11 +59,11 @@ function doListPeoples() {
 }
 
 function doStatistics() {
-  let maleCount = 0;
-  let femaleCount = 0;
+  maleCount = 0;
+  femaleCount = 0;
   countResult = _peoplesFilterGlobal.length;
 
-  let agesTotal = _peoplesFilterGlobal.reduce((accumulator, current) => {
+  agesTotal = _peoplesFilterGlobal.reduce((accumulator, current) => {
     return accumulator + current.age
   }, 0);
 
@@ -71,17 +75,13 @@ function doStatistics() {
         femaleCount++;      
   });
 
-  let ageAverage = agesTotal/_peoplesFilterGlobal.length;
-
-  console.log(`Masculino: ${ maleCount }`);
-  console.log(`Feminino: ${ femaleCount }`);
-  console.log(`Soma das idades: ${ numberFormat.format(agesTotal) }`);
-  console.log(`Média das idades: ${ Math.round(ageAverage * 100) / 100 }`);
+  ageAverage = agesTotal/_peoplesFilterGlobal.length;
 }
 
 function render() {
   handleShowNoResult();
   renderPeoplePanel();
+  renderStatisticsPanel();
 }
 
 function handleShowNoResult() {
@@ -107,6 +107,23 @@ function renderPeoplePanel() {
     });
   } else {
     peoplePanelDiv.innerHTML = '';
+    statisticsPanelDiv.innerHTML = '';
+  }
+}
+
+function renderStatisticsPanel() {
+  if (countResult > 0) {
+    statisticsPanelDiv.innerHTML = `<div class="row">
+        <h4 class="m-4">Estatísticas</h4>
+        <div class="col-12 ml-2 mb-4">
+          <strong>Masculino</strong>: ${ maleCount } <br />
+          <strong>Feminino</strong>: ${ femaleCount } <br />
+          <strong>Soma das idades</strong>: ${ numberFormat.format(agesTotal) } <br />
+          <strong>Média das idades</strong>: ${ Math.round(ageAverage * 100) / 100 }
+        </div>
+      </div>
+    `;
+  } else {
     statisticsPanelDiv.innerHTML = '';
   }
 }
