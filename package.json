@@ -1,0 +1,15 @@
+{
+  "name": "pesquisa-vanilla-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server --watch ./back-end/pessoas.json"
+  },
+  "keywords": [],
+  "author": "Fabio Almeida <fabioalmeida@fabiodeveloper.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "json-server": "^0.16.1"
+  }
+}

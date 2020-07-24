@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesquisa Vanilla Js</title>
+  <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-12">
+        <h1 class="text-center">Pesquisa Vanilla Js</h1>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-11">
+        <input class="form-control rounded-0" type="text" id="term-search">        
+      </div>
+      <div class="col-1">
+        <button class="btn btn-primary rounded-0" id="search">Buscar</button>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-6">
+          <div class="border border-dark rounded-sm">
+            <div class="row d-none">
+              <div class="col-12">
+                <h4 class="m-4"><span id="count-people">0</span> usuário(s) encontrados</h4>
+              </div>
+              <div class="col-12">
+                <div id="found-people"></div>
+              </div>
+            </div>
+            <div class="row" id="panel-no-people">
+              <div class="col-12">
+                <h3 class="text-center">Nenhum usuário filtrado</h3>
+              </div>
+            </div> 
+          </div>
+      </div>
+      <div class="col-6">
+          <div class="border border-dark rounded-sm">
+            <div class="row d-none">
+              <div class="col-12">
+                <h4 class="m-4">Estatísticas</h4>
+              </div>
+              <div class="col-12">
+                <div id="statistics-people"></div>
+              </div>
+            </div>
+            <div class="row" id="panel-no-statistics">
+              <div class="col-12">
+                <h3 class="text-center">Nada a ser exibido</h3>
+              </div>
+            </div>            
+          </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/jquery/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>
