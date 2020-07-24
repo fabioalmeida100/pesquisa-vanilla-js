@@ -13,6 +13,7 @@ window.addEventListener('load', () => {
   statisticsPanel = document.querySelector('#statistics-panel');
   buttonSearch = document.querySelector('#search').addEventListener('click', searchPeople);
   inputSearch = document.querySelector('#term-search');
+  inputSearch.focus();
   loadPeople();
 })
 

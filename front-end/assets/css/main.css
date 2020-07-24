@@ -2,6 +2,10 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+.title {
+  font-size: 1.3em;
+}
+
 .subtitle {
   font-size: .75rem;
   font-weight: 500;
@@ -9,4 +13,23 @@
 
 .font-press-start {
   font-family: 'Press Start 2P', cursive;
+}
+
+.input-search {
+  padding-right: 0!important;
+}
+
+.input-search input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.input-button {
+  padding-left: 0!important;
+}
+
+.form-control:focus {
+  outline: none !important;
+  box-shadow: none;
 }
