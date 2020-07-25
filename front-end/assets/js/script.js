@@ -2,8 +2,7 @@ let _peopleEndpoint = 'http://localhost:3000/pessoas'
 let _peoplesListFromApi = [];
 let _peoplesGlobal = [];
 let _peoplesFilterGlobal = [];
-let peoplePanel = null;
-let statisticsPanel = null;
+let _countResult = 0;
 let buttonSearch = null;
 let inputSearch = null;
 let numberFormat = Intl.NumberFormat('pt-BR');
@@ -11,16 +10,12 @@ let panelNoPeople = null;
 let panelNoStatistics = null;
 let peoplePanelDiv = null;
 let statisticsPanelDiv = null;
-let _countResult = 0;
 let maleCount = 0;
 let femaleCount = 0;
 let agesTotal = 0;
 let ageAverage = 0;
 
 window.addEventListener('load', () => {
-  peoplePanel = document.querySelector('#people-panel');
-  statisticsPanel = document.querySelector('#statistics-panel');
-  
   buttonSearch = document.querySelector('#search');
   buttonSearch.addEventListener('click', searchPeople);
   inputSearch = document.querySelector('#term-search');
