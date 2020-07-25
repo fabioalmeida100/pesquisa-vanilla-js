@@ -11,7 +11,7 @@ let panelNoPeople = null;
 let panelNoStatistics = null;
 let peoplePanelDiv = null;
 let statisticsPanelDiv = null;
-let countResult = 0;
+let _countResult = 0;
 let maleCount = 0;
 let femaleCount = 0;
 let agesTotal = 0;
@@ -20,13 +20,18 @@ let ageAverage = 0;
 window.addEventListener('load', () => {
   peoplePanel = document.querySelector('#people-panel');
   statisticsPanel = document.querySelector('#statistics-panel');
-  buttonSearch = document.querySelector('#search').addEventListener('click', searchPeople);
+  
+  buttonSearch = document.querySelector('#search');
+  buttonSearch.addEventListener('click', searchPeople);
   inputSearch = document.querySelector('#term-search');
+  inputSearch.addEventListener('keyup', serchPeopleEnter)
+
   panelNoPeople = document.querySelector('#panel-no-people');
   panelNoStatistics = document.querySelector('#panel-no-statistics');
   peoplePanelDiv = document.querySelector('#people-panel');
   statisticsPanelDiv = document.querySelector('#statistics-panel');
   inputSearch.focus();
+
   loadPeople();
 })
 
@@ -50,6 +55,15 @@ function searchPeople() {
   render();
 }
 
+function serchPeopleEnter(event) {
+  buttonSearch.disabled = (event.target.value.length == 0);
+  if (event.target.value.length > 0) {
+    if (event.keyCode === 13) {
+      searchPeople();
+    }
+  }   
+}
+
 function doListPeoples() {
   _peoplesFilterGlobal = _peoplesGlobal.filter((item) => {
     return item.name.toLowerCase().includes(inputSearch.value.toLowerCase());
@@ -61,7 +75,7 @@ function doListPeoples() {
 function doStatistics() {
   maleCount = 0;
   femaleCount = 0;
-  countResult = _peoplesFilterGlobal.length;
+  _countResult = _peoplesFilterGlobal.length;
 
   agesTotal = _peoplesFilterGlobal.reduce((accumulator, current) => {
     return accumulator + current.age
@@ -85,7 +99,7 @@ function render() {
 }
 
 function handleShowNoResult() {
-  if (countResult > 0) {    
+  if (_countResult > 0) {    
     panelNoPeople.classList.add('d-none');
     panelNoStatistics.classList.add('d-none');
   } else {
@@ -95,8 +109,8 @@ function handleShowNoResult() {
 }
 
 function renderPeoplePanel() {
-  if (countResult > 0) {
-    peoplePanelDiv.innerHTML = `<h4 class="m-4"><span> ${ countResult } </span> usuário(s) encontrado(s)</h4>`;
+  if (_countResult > 0) {
+    peoplePanelDiv.innerHTML = `<h4 class="m-4"><span> ${ _countResult } </span> usuário(s) encontrado(s)</h4>`;
     _peoplesFilterGlobal.forEach((item, i) => {
         let div = `
             <div class="col-12 mb-2">
@@ -112,7 +126,7 @@ function renderPeoplePanel() {
 }
 
 function renderStatisticsPanel() {
-  if (countResult > 0) {
+  if (_countResult > 0) {
     statisticsPanelDiv.innerHTML = `<div class="row">
         <h4 class="m-4">Estatísticas</h4>
         <div class="col-12 ml-2 mb-2">
